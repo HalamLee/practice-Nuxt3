@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
 export default defineNuxtConfig({
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    },
+  },
   alias: {
     assets: '/<rootDir>/assets',
   },
@@ -19,5 +25,4 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['./stores'],
   },
-  ssr: false,
 });

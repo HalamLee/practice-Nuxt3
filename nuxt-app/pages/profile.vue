@@ -1,4 +1,14 @@
-<script setup>
+<script setup lang="ts">
+useHead({
+  title: 'My App - Profile',
+  meta: [
+    {
+      name: 'description',
+      content: 'This is a repository for practicing Nuxt3 - Profile page',
+    },
+  ],
+});
+
 import { useUtils } from '~/composables/useUtils';
 
 const { sayHello } = useUtils();
