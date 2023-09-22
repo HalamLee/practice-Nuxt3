@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
 export default defineNuxtConfig({
+  hooks: {
+    ready: (ctx) => console.log(ctx),
+  },
   app: {
     head: {
       charset: 'utf-8',
