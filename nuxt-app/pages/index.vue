@@ -1,9 +1,11 @@
-<script setup>
-import { useCounterStore } from '~/stores/myStore';
-const store = useCounterStore();
-console.log(store);
+<script setup lang="ts">
+const { data } = await useFetch('/api/hello');
+console.log(data.value);
+
+const response = await $fetch('/api/hello');
+console.log(response);
 </script>
 
 <template>
-  <div>Hello</div>
+  <pre>{{ data }}</pre>
 </template>
