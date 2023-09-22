@@ -1,7 +1,3 @@
 <template>
-  <div class="Main">
-    <Alert />
-    <Profile />
-    <ProfileHeaderAvatar />
-  </div>
+  <div class="Main">Main page</div>
 </template>
