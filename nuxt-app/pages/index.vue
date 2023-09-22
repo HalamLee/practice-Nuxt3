@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  middleware: 'auth',
+});
+
 const { $sayHello } = useNuxtApp();
 $sayHello('hiiiiiiii');
 </script>
