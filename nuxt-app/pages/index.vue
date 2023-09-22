@@ -1,8 +1,6 @@
 <script setup>
-import { useUtils } from '~/composables/useUtils';
-
-const { sayHello } = useUtils();
-sayHello();
+const { $sayHello } = useNuxtApp();
+$sayHello('hiiiiiiii');
 </script>
 
 <template>
