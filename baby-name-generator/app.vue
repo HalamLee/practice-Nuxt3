@@ -6,29 +6,82 @@
       <div class="option-container">
         <h4>1) Choose a gender</h4>
         <div class="option-buttons">
-          <button>Boy</button>
-          <button>Unisex</button>
-          <button>Girl</button>
+          <button :class="options.gender === Gender.BOY && 'option-active'">
+            Boy
+          </button>
+          <button :class="options.gender === Gender.UNISEX && 'option-active'">
+            Unisex
+          </button>
+          <button :class="options.gender === Gender.GIRL && 'option-active'">
+            Girl
+          </button>
         </div>
       </div>
       <div class="option-container">
         <h4>2) Choose the name's popularity</h4>
         <div class="option-buttons">
-          <button>Trendy</button>
-          <button>Unique</button>
+          <button
+            :class="
+              options.popularity === Popularity.TRENDY && 'option-active'
+            ">
+            Trendy
+          </button>
+          <button
+            :class="
+              options.popularity === Popularity.UNIQUE && 'option-active'
+            ">
+            Unique
+          </button>
         </div>
         <div class="option-container">
           <h4>3) Choose name's length'</h4>
           <div class="option-buttons">
-            <button>Long</button>
-            <button>All</button>
-            <button>Short</button>
+            <button :class="options.length === Length.LONG && 'option-active'">
+              Long
+            </button>
+            <button :class="options.length === Length.ALL && 'option-active'">
+              All
+            </button>
+            <button :class="options.length === Length.SHORT && 'option-active'">
+              Short
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+enum Gender {
+  GIRL = 'Girl',
+  BOY = 'Boy',
+  UNISEX = 'Unisex',
+}
+
+enum Popularity {
+  TRENDY = 'Trendy',
+  UNIQUE = 'Unique',
+}
+
+enum Length {
+  LONG = 'Long',
+  SHORT = 'Short',
+  ALL = 'All',
+}
+
+interface OptionsState {
+  gender: Gender;
+  popularity: Popularity;
+  length: Length;
+}
+
+const options = reactive<OptionsState>({
+  gender: Gender.GIRL,
+  popularity: Popularity.TRENDY,
+  length: Length.SHORT,
+});
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -74,6 +127,11 @@ h1 {
 
   &:last-child {
     border-radius: 0 1rem 1rem 0;
+  }
+
+  &.option-active {
+    background-color: rgb(249, 87, 89);
+    color: white;
   }
 }
 </style>
