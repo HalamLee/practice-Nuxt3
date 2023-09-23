@@ -6,13 +6,19 @@
       <div class="option-container">
         <h4>1) Choose a gender</h4>
         <div class="option-buttons">
-          <button :class="options.gender === Gender.BOY && 'option-active'">
+          <button
+            :class="options.gender === Gender.BOY && 'option-active'"
+            @click="options.gender = Gender.BOY">
             Boy
           </button>
-          <button :class="options.gender === Gender.UNISEX && 'option-active'">
+          <button
+            :class="options.gender === Gender.UNISEX && 'option-active'"
+            @click="options.gender = Gender.UNISEX">
             Unisex
           </button>
-          <button :class="options.gender === Gender.GIRL && 'option-active'">
+          <button
+            :class="options.gender === Gender.GIRL && 'option-active'"
+            @click="options.gender = Gender.GIRL">
             Girl
           </button>
         </div>
@@ -21,28 +27,32 @@
         <h4>2) Choose the name's popularity</h4>
         <div class="option-buttons">
           <button
-            :class="
-              options.popularity === Popularity.TRENDY && 'option-active'
-            ">
+            :class="options.popularity === Popularity.TRENDY && 'option-active'"
+            @click="options.popularity = Popularity.TRENDY">
             Trendy
           </button>
           <button
-            :class="
-              options.popularity === Popularity.UNIQUE && 'option-active'
-            ">
+            :class="options.popularity === Popularity.UNIQUE && 'option-active'"
+            @click="options.popularity = Popularity.UNIQUE">
             Unique
           </button>
         </div>
         <div class="option-container">
           <h4>3) Choose name's length'</h4>
           <div class="option-buttons">
-            <button :class="options.length === Length.LONG && 'option-active'">
+            <button
+              :class="options.length === Length.LONG && 'option-active'"
+              @click="options.length = Length.LONG">
               Long
             </button>
-            <button :class="options.length === Length.ALL && 'option-active'">
+            <button
+              :class="options.length === Length.ALL && 'option-active'"
+              @click="options.length = Length.ALL">
               All
             </button>
-            <button :class="options.length === Length.SHORT && 'option-active'">
+            <button
+              :class="options.length === Length.SHORT && 'option-active'"
+              @click="options.length = Length.SHORT">
               Short
             </button>
           </div>
