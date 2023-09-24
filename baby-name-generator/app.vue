@@ -63,22 +63,7 @@
 </template>
 
 <script setup lang="ts">
-enum Gender {
-  GIRL = 'Girl',
-  BOY = 'Boy',
-  UNISEX = 'Unisex',
-}
-
-enum Popularity {
-  TRENDY = 'Trendy',
-  UNIQUE = 'Unique',
-}
-
-enum Length {
-  LONG = 'Long',
-  SHORT = 'Short',
-  ALL = 'All',
-}
+import { Gender, Popularity, Length, names } from '@/data';
 
 interface OptionsState {
   gender: Gender;
@@ -91,6 +76,8 @@ const options = reactive<OptionsState>({
   popularity: Popularity.TRENDY,
   length: Length.SHORT,
 });
+
+const selectedNames = ref<string[]>([]);
 </script>
 
 <style lang="scss" scoped>
@@ -143,5 +130,16 @@ h1 {
     background-color: rgb(249, 87, 89);
     color: white;
   }
+}
+
+.primary {
+  background-color: rgb(249, 87, 89);
+  color: white;
+  border-radius: 6.5rem;
+  border: none;
+  padding: 0.75rem 4rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 </style>
