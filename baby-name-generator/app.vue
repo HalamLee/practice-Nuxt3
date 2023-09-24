@@ -58,6 +58,13 @@
           </div>
         </div>
       </div>
+      <button class="primary" @click="computeSelectedNames">Find Names</button>
+    </div>
+    <div class="cards-container">
+      <div v-for="name in selectedNames" :key="name" class="card">
+        {{ name }}
+        <p>X</p>
+      </div>
     </div>
   </div>
 </template>
@@ -76,6 +83,18 @@ const options = reactive<OptionsState>({
   popularity: Popularity.TRENDY,
   length: Length.SHORT,
 });
+
+const computeSelectedNames = () => {
+  const filteredNames = names
+    .filter((name) => name.gender === options.gender)
+    .filter((name) => name.popularity === options.popularity)
+    .filter((name) => {
+      if (options.length === Length.ALL) return true;
+      else return name.length === options.length;
+    });
+
+  selectedNames.value = filteredNames.map((name) => name.name);
+};
 
 const selectedNames = ref<string[]>([]);
 </script>
@@ -96,7 +115,7 @@ h1 {
 .options-container {
   background-color: rgb(255, 238, 236);
   border-radius: 2rem;
-  padding: 1rem;
+  padding: 0.1rem;
   width: 95%;
   margin: 0 auto;
   margin-top: 4rem;
@@ -141,5 +160,30 @@ h1 {
   font-size: 1rem;
   margin-top: 1rem;
   cursor: pointer;
+}
+
+.cards-container {
+  display: flex;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+
+  .card {
+    background-color: rgb(27, 60, 138);
+    width: 28%;
+    color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+    p {
+      position: absolute;
+      top: -28%;
+      left: 93%;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.178);
+    }
+  }
 }
 </style>
