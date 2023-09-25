@@ -43,6 +43,18 @@ const route = useRoute();
 const name = route.params.name;
 
 const restaurant = restaurants.find((r) => r.name === name);
+
+console.log('restaurant', restaurant);
+
+useHead({
+  title: restaurant ? name : '404 - Restaurant Not Found',
+  meta: [
+    {
+      name: 'viewport',
+      content: 'width=device-width',
+    },
+  ],
+});
 </script>
 
 <style scoped>
