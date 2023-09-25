@@ -52,7 +52,7 @@ h2 {
 }
 
 .container {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   padding: 50px 0;
 }
