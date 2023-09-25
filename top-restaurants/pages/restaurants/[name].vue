@@ -19,13 +19,19 @@
         </div>
       </div>
     </NuxtLayout>
-    <div v-else class="restaurant-not-found">
-      <h1>Restaurant not found</h1>
-      <button
-        class="btn btn-primary brn-lg"
-        @click="$router.push('/restaurants')">
-        Go Back
-      </button>
+    <div class="restaurant-not-found" v-else>
+      <NuxtLayout name="error">
+        <template #header>
+          <h1>Restaurant not found</h1>
+        </template>
+        <template #redirectEl>
+          <button
+            class="btn btn-primary brn-lg"
+            @click="$router.push('/restaurants')">
+            Go Back
+          </button>
+        </template>
+      </NuxtLayout>
     </div>
   </div>
 </template>
@@ -85,5 +91,9 @@ const restaurant = restaurants.find((r) => r.name === name);
 .content {
   font-size: 1.5rem;
   margin-top: 4rem;
+}
+
+img {
+  width: 10rem;
 }
 </style>
