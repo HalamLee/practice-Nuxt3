@@ -34,15 +34,25 @@
 <script setup lang="ts">
 const search = ref('Seoul');
 const input = ref('');
+const background = ref('');
 
-const { data: city, error } = useFetch(
-  () =>
-    `https://api.openweathermap.org/data/2.5/weather?q=${search.value}&units=metric&appid=3920187c07ee1d1397613db28a2ecc29`
+const { data: city, error } = await useAsyncData(
+  'city',
+  async () => {
+    const response = $fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${search.value}&units=metric&appid=3920187c07ee1d1397613db28a2ecc29`
+    );
+
+    return response;
+  },
+  {
+    watch: [search],
+  }
 );
 
 const clickHandler = () => {
-  const formatedSearch = input.value.trim().split(' ').join('+');
-  search.value = formatedSearch;
+  const formattedSearch = input.value.trim().split(' ').join('+');
+  search.value = formattedSearch;
   input.value = '';
 };
 </script>
