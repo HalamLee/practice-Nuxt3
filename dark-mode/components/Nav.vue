@@ -1,14 +1,18 @@
 <template>
-  <nav>
-    <div>
+  <nav :style="isDarkMode ? { backgroundColor: 'rgb(73,72,72)' } : null">
+    <div :style="isDarkMode ? { color: 'white' } : null">
       <h1>Article</h1>
       <label class="switch">
-        <input type="checkbox" />
+        <input type="checkbox" v-model="isDarkMode" @click="toggleDarkMode" />
         <span class="slider round"></span>
       </label>
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+const { isDarkMode, toggleDarkMode } = useDarkMode();
+</script>
 
 <style scoped>
 nav {
